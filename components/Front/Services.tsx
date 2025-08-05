@@ -1,7 +1,15 @@
+'use client'
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { services, siteConfig } from "@/lib/site";
+import { useAppConfig } from "@/lib/edge-config-context";
+import { Service } from "@/lib/types";
+import { getLucideIcon } from "@/lib/getLucideIcon";
 
-const Services = () => {
+type Props= {
+  services :Service[]
+}
+
+const Services = ({services}:Props) => {
+  const siteConfig = useAppConfig()
   return (
     <section id="services" className="py-16 lg:py-24 bg-background">
       <div className="container mx-auto px-4">
@@ -16,7 +24,7 @@ const Services = () => {
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {services.map((service, index) => {
-            const Icon = service.icon;
+            const Icon = getLucideIcon(service.icon); 
             return (
               <Card key={index} className="hover:shadow-medical transition-all duration-300 border-border">
                 <CardHeader className="text-center pb-4">

@@ -1,6 +1,7 @@
 import Doctors from "@/components/Front/Doctors";
 import Footer from "@/components/Front/Footer";
 import Header from "@/components/Front/Header";
+import { getAllArrayData } from "@/lib/edge-config";
 import { siteConfig } from "@/lib/site";
 import { Metadata } from "next";
 
@@ -10,12 +11,13 @@ export const metadata :Metadata = {
     keywords:["veda clinic ahmedabad", "about veda clinic", "multispeciality clinic ahmedabad", "experienced doctors in ahmedabad", "best ent clinic", "general phisician doctor south bopal"]
 }
 
-export default function About() {
+export default async function About() {
+    const allArrayData = await getAllArrayData();
     return (
         <div className="min-h-screen bg-background">
             <Header />
-            <Doctors />
-            <Footer/>
+            <Doctors doctors={allArrayData.doctors} />
+            <Footer services={allArrayData.services}/>
         </div>
     );
 }

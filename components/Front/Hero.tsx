@@ -1,8 +1,11 @@
+'use client'
 import { Button } from "@/components/ui/button";
-import { siteConfig } from "@/lib/site";
+import { useAppConfig } from "@/lib/edge-config-context";
+// import { siteConfig } from "@/lib/site";
 import { Users, Clock, Award } from "lucide-react";
 
 const Hero = () => {
+  const siteConfig = useAppConfig();
   return (
     <section className="bg-white text-foreground py-16 lg:py-24">
       <div className="container mx-auto px-4">

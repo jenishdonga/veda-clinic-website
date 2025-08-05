@@ -1,11 +1,17 @@
+'use client';
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { User, Award, Clock } from "lucide-react";
-import { doctors, siteConfig } from "@/lib/site";
+import { Doctor } from "@/lib/types";
+import { useAppConfig } from "@/lib/edge-config-context";
+
+type Props ={
+  doctors:Doctor[]
+}
 
 
-
-const Doctors = () => {
+const Doctors = ({doctors}:Props) => {
+  const siteConfig = useAppConfig();
   return (
     <section id="doctors" className="py-16 lg:py-24 bg-secondary/50">
       <div className="container mx-auto px-4">

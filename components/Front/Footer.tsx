@@ -1,9 +1,16 @@
-import { services, siteConfig } from "@/lib/site";
+'use client'
+import { useAppConfig } from "@/lib/edge-config-context";
+import { Service } from "@/lib/types";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-const Footer = () => {
+type Props= {
+  services :Service[]
+}
+
+export default function  Footer({services}:Props){
+  const siteConfig = useAppConfig();
   return (
     <footer className="bg-gradient-medical text-white">
       <div className="container mx-auto px-4 py-12">
@@ -104,7 +111,7 @@ const Footer = () => {
         <div className="border-t border-white/20 mt-8 pt-6">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
             <p className="text-sm opacity-75">
-              {siteConfig.copyright}
+             © {new Date().getFullYear()} {siteConfig.name} All rights reserved | {siteConfig.copyright}
             </p>
             <div className="flex gap-4 text-sm">
               <Link href={'/privacy-policy'} className="opacity-75 hover:opacity-100 transition-opacity">
@@ -122,5 +129,3 @@ const Footer = () => {
     </footer>
   );
 };
-
-export default Footer;

@@ -1,3 +1,4 @@
+"use client"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import {
@@ -8,10 +9,15 @@ import {
   Calendar,
   Navigation
 } from "lucide-react";
-import { areas, siteConfig } from "@/lib/site";
+import { useAppConfig } from "@/lib/edge-config-context";
+import { Area } from "@/lib/types";
 
-const Contact = () => {
+type Props = {
+  areas: Area[]
+}
 
+const Contact = ({areas}:Props) => {
+  const siteConfig = useAppConfig();
   return (
     <section id="contact" className="py-16 lg:py-24 bg-background">
       <div className="container mx-auto px-4">

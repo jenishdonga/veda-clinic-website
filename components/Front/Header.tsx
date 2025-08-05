@@ -1,12 +1,35 @@
 'use client'
-import { siteConfig } from "@/lib/site";
+// import { siteConfig } from "@/lib/site";
 import { Phone, Mail, Clock, MapPin, Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useState } from "react";
+import { useState ,useEffect} from "react";
+import { useAppConfig } from '@/lib/edge-config-context';
+
+ 
+function InstallPrompt() {
+  const [isIOS, setIsIOS] = useState(false)
+  const [isStandalone, setIsStandalone] = useState(false)
+ 
+  useEffect(() => {
+    setIsIOS(
+      /iPad|iPhone|iPod/.test(navigator.userAgent) && !(window as any).MSStream
+    )
+ 
+    setIsStandalone(window.matchMedia('(display-mode: standalone)').matches)
+  }, [])
+ 
+  if (isStandalone) {
+    return null // Don't show install button if already installed
+  }
+ 
+  return null
+}
+ 
 
 const Header = () => {
+  const siteConfig = useAppConfig();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const router = useRouter();
   const pathname = usePathname();
@@ -171,6 +194,7 @@ const Header = () => {
           )}
         </div>
       </header>
+      <InstallPrompt />
     </>
   );
 };
