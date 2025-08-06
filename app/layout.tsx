@@ -1,8 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { MyWrapper } from "@/lib/edge-config-context";
-import { getSiteConfig } from "@/lib/edge-config";
 import type { Metadata, ResolvingMetadata } from "next";
+import SiteConfigWrapper from "@/components/Front/SiteConfigWrapper";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -44,21 +43,20 @@ export const metadata: Metadata = {
   }
 };
 
-export default async function RootLayout({
+export default  function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const siteConfig = await getSiteConfig();
 
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased scroll-smooth`}
       >
-        <MyWrapper siteConfig={siteConfig}>
+        <SiteConfigWrapper>
           {children}
-        </MyWrapper>
+        </SiteConfigWrapper>
       </body>
     </html>
   );
