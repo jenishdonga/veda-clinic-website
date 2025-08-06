@@ -1,9 +1,8 @@
-
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { MyWrapper } from "@/lib/edge-config-context";
 import { getSiteConfig } from "@/lib/edge-config";
-import type { Metadata } from "next";
+import type { Metadata, ResolvingMetadata } from "next";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,6 +13,7 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
+
 
 
 
@@ -29,16 +29,19 @@ export const metadata: Metadata = {
     "Dr Bela Donga",
     "Dr Radhika Patoriya"
   ],
-  // icons:{
-  //   icon: [
-  //     { url: "/ic/favicon-32x32.png", sizes: "32x32", type: "image/png" },
-  //     { url: "/ic/favicon-16x16.png", sizes: "16x16", type: "image/png" },
-  //   ],
-  //   apple: [
-  //     { url: "/ic/apple-icon-180x180.png", sizes: "180x180" },
-  //     { url: "/ic/apple-icon-152x152.png", sizes: "152x152" },
-  //   ],
-  // },
+  openGraph: {
+    title: "Veda Multispeciality Clinic - Expert Medical Care in South Bopal, Ahmedabad",
+    description: "Veda Multi Speciality Clinic offers expert medical care with trusted specialists including ENT surgeons , orthopaedics, cardiologists, and more. Led by Dr. Bela Donga and Dr. Radhika Patoriya.",
+    url: "https://veda-clinic-website.vercel.app",
+    images: [
+      {
+        "url": "https://veda-clinic-website.vercel.app/b4dac46e-f71a-442e-be96-f7a841eaaf16.png",
+        "height": 416,
+        "width": 1022,
+        "alt": "Veda Multispeciality Clinic South Bopal Ahmedabad"
+      }
+    ]
+  }
 };
 
 export default async function RootLayout({
