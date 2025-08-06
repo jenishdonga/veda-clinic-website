@@ -1,7 +1,8 @@
+
 import Footer from "@/components/Front/Footer";
 import Header from "@/components/Front/Header";
 import Services from "@/components/Front/Services";
-import { getServices } from "@/lib/edge-config";
+import { getAllArrayData, getServices } from "@/lib/edge-config";
 import { siteConfig } from "@/lib/site";
 import { get } from "@vercel/edge-config";
 import { Metadata } from "next";
@@ -20,12 +21,12 @@ export const metadata: Metadata = {
 }
 
 export default async function About() {
-    const services = await getServices();
+    const AllArrayData = await getAllArrayData();
     return (
         <div className="min-h-screen bg-background">
             <Header />
-            <Services services={services} />
-            <Footer services={services}/>
+            <Services services={AllArrayData.services} />
+            <Footer services={AllArrayData.services}/>
         </div>
     );
 }

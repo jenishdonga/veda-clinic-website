@@ -7,8 +7,8 @@ export default function manifest(): MetadataRoute.Manifest {
         description: "Veda Multi Speciality Clinic offers expert medical care with trusted specialists including ENT surgeons , orthopaedics, cardiologists, and more. Led by Dr. Bela Donga and Dr. Radhika Patoriya.",
         start_url: '/',
         display: 'standalone',
-        background_color: '#ffffff',
-        theme_color: '#000000',
+        background_color: '#fe1024',
+        theme_color: '#fe1024',
         icons: [
             {
                 src: "icons/-48x48.png",

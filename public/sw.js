@@ -6,10 +6,13 @@ const STATIC_ASSETS = [
   '/',
   '/manifest.webmanifest',
   '/favicon.ico',
-  '/icons/icon-192x192.png',
-  '/icons/icon-512x512.png',
+  '/icons/-192x192.png',
+  '/icons/-512x512.png',
   '/screenshots/home.png',
   '/screenshots/home-desktop.png',
+  '/about-us',
+  '/contact-us',
+  '/services'
 ];
 
 // On install: cache predefined static files

@@ -3,10 +3,17 @@ import { AllArraysData, Area, Doctor, Service, SiteConfig } from './types'
 import {services as SERVICES,doctors as DOCTORS,areas as AREAS,siteConfig as SITECONFIG} from "@/lib/site";
 
 export async function getSiteConfig(){
-  let siteConfig = await get('siteConfig') as SiteConfig;
-  if(typeof siteConfig !== 'object' && siteConfig == null){
+  let siteConfig;
+  try{
+     siteConfig = await get('siteConfig') as SiteConfig;
+    if (typeof siteConfig !== 'object' && siteConfig == null) {
+      siteConfig = SITECONFIG;
+    }
+  }catch(e){
+    console.log(e,"ERROR IN FETCHING SITECONFIG");
     siteConfig = SITECONFIG;
   }
+  
   return siteConfig;
 }
 
