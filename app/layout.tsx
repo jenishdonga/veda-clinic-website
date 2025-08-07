@@ -1,7 +1,10 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import type { Metadata, ResolvingMetadata } from "next";
+import type { Metadata } from "next";
 import SiteConfigWrapper from "@/components/Front/SiteConfigWrapper";
+import Head from "next/head";
+
+import { siteConfig } from "@/lib/site";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,36 +17,19 @@ const geistMono = Geist_Mono({
 });
 
 
-
-
 export const metadata: Metadata = {
-  title: 'Veda Multispeciality Clinic - Expert Medical Care in South Bopal, Ahmedabad',
-  description: 'Veda Multi Speciality Clinic offers expert medical care with trusted specialists including ENT surgeons , orthopaedics, cardiologists, and more. Led by Dr. Bela Donga and Dr. Radhika Patoriya.',
-  keywords: [
-    "Ent doctor near south bopal",
-    "doctor near me",
-    "clinic near me",
-    "Hospital near south bopal",
-    "Ent surgeon in south bopal, shela",
-    "Dr Bela Donga",
-    "Dr Radhika Patoriya"
-  ],
+  title: siteConfig.seo.title,
+  description: siteConfig.seo.description,
+  keywords: [...siteConfig.seo.keywords],
   openGraph: {
-    title: "Veda Multispeciality Clinic - Expert Medical Care in South Bopal, Ahmedabad",
-    description: "Veda Multi Speciality Clinic offers expert medical care with trusted specialists including ENT surgeons , orthopaedics, cardiologists, and more. Led by Dr. Bela Donga and Dr. Radhika Patoriya.",
-    url: "https://veda-clinic-website.vercel.app",
-    images: [
-      {
-        "url": "https://veda-clinic-website.vercel.app/b4dac46e-f71a-442e-be96-f7a841eaaf16.png",
-        "height": 416,
-        "width": 1022,
-        "alt": "Veda Multispeciality Clinic South Bopal Ahmedabad"
-      }
-    ]
+    title: siteConfig.seo.title,
+    description: siteConfig.seo.description,
+    url: siteConfig.seo.url,
+    images: [...siteConfig.seo.image]
   }
 };
 
-export default  function RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;

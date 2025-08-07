@@ -29,29 +29,31 @@ export async function getAllArrayData(){
     return allArrayData;
 }
 
-export async function getServices() {
-  let services = await get('services') as Service[]
-  if(typeof services !=='object' && services === null){
-    services = SERVICES
-  }
-  return services;
-  
-}
 
-export async function getDoctors() {
-  let doctors = await get('doctors') as Doctor[]
-  if(typeof doctors !=='object' && doctors === null){
-    doctors = DOCTORS
-  }
-  return doctors;
-  
-}
 
-export async function getAreas() {
-  let areas = await get('areas') as Area[]
-  if(typeof areas !=='object' && areas === null){
-    areas = AREAS
-  }
-  return areas;
+// export async function getServices() {
+//   let services = await get('services') as Service[]
+//   if(typeof services !=='object' && services === null){
+//     services = SERVICES
+//   }
+//   return services;
   
-}
+// }
+
+// export async function getDoctors() {
+//   let doctors = await get('doctors') as Doctor[]
+//   if(typeof doctors !=='object' && doctors === null){
+//     doctors = DOCTORS
+//   }
+//   return doctors;
+  
+// }
+
+// export async function getAreas() {
+//   let areas = await get('areas') as Area[]
+//   if(typeof areas !=='object' && areas === null){
+//     areas = AREAS
+//   }
+//   return areas;
+  
+// }

@@ -4,29 +4,29 @@ import { Phone, Mail, Clock, MapPin, Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useState ,useEffect} from "react";
+import { useState, useEffect } from "react";
 import { useAppConfig } from '@/lib/edge-config-context';
 
- 
+
 function InstallPrompt() {
   const [isIOS, setIsIOS] = useState(false)
   const [isStandalone, setIsStandalone] = useState(false)
- 
+
   useEffect(() => {
     setIsIOS(
       /iPad|iPhone|iPod/.test(navigator.userAgent) && !(window as any).MSStream
     )
- 
+
     setIsStandalone(window.matchMedia('(display-mode: standalone)').matches)
   }, [])
- 
+
   if (isStandalone) {
     return null // Don't show install button if already installed
   }
- 
+
   return null
 }
- 
+
 
 const Header = () => {
   const siteConfig = useAppConfig();
@@ -69,21 +69,35 @@ const Header = () => {
       <div className="bg-primary text-white py-2 text-xs sm:text-sm overflow-hidden">
         <div className="container mx-auto px-4">
           <div className="flex flex-wrap justify-center items-center gap-2 sm:gap-4">
+
             <div className="flex items-center gap-1 sm:gap-2 min-w-0">
+              <a href={`tel:${siteConfig.phone}`}>
               <Phone className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" />
-              <span className="truncate">{siteConfig.phone}</span>
+              </a>
+              <a href={`tel:${siteConfig.phone}`}>
+                <span className="truncate">{siteConfig.phone}</span>
+              </a>
             </div>
+
             <div className="hidden sm:flex items-center gap-2 min-w-0">
+              <a href={`mailto:${siteConfig.email}`}>
               <Mail className="w-4 h-4 flex-shrink-0" />
-              <span className="truncate">{siteConfig.email}</span>
+              </a>
+              <a href={`mailto:${siteConfig.email}`}>
+                <span className="truncate">{siteConfig.email}</span>
+              </a>
             </div>
             <div className="hidden md:flex items-center gap-2 min-w-0">
               <Clock className="w-4 h-4 flex-shrink-0" />
               <span className="truncate">{siteConfig.infoTime}</span>
             </div>
             <div className="flex items-center gap-1 sm:gap-2 min-w-0">
-              <MapPin className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" />
+              <a href={`${siteConfig.locationLink}`} target="_blank">
+                <MapPin className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" />
+              </a>
+              <a href={`${siteConfig.locationLink}`} target="_blank">
               <span className="truncate">{siteConfig.infoAddress}</span>
+              </a>
             </div>
             {/* Social Media Links */}
             <div className="flex items-center gap-2">
@@ -94,7 +108,7 @@ const Header = () => {
                 className="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center hover:bg-accent transition-colors"
                 aria-label="Facebook"
               >
-               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-facebook-icon lucide-facebook"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-facebook-icon lucide-facebook"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" /></svg>
               </a>
               <a
                 target="_blank"
@@ -103,28 +117,28 @@ const Header = () => {
                 className="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center hover:bg-accent transition-colors"
                 aria-label="Instagram"
               >
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-instagram-icon lucide-instagram"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-instagram-icon lucide-instagram"><rect width="20" height="20" x="2" y="2" rx="5" ry="5" /><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" /><line x1="17.5" x2="17.51" y1="6.5" y2="6.5" /></svg>
               </a>
             </div>
           </div>
         </div>
-      </div>
+      </div >
 
       {/* Main Header - Sticky */}
-      <header className="sticky top-0 z-50 bg-gradient-medical text-white shadow-medical">
+      < header className="sticky top-0 z-50 bg-gradient-medical text-white shadow-medical" >
         <div className="container mx-auto px-4 py-6">
           <div className="flex items-center justify-between">
             {/* Logo and Title */}
             <div className="flex items-center gap-3 sm:gap-4 min-w-0">
               <div className="h-12 w-auto  sm:h-14 flex-shrink-0">
                 <Link href={"/"}>
-                <Image
-                  alt="Veda Multispeciality Clinic Logo"
-                  src={siteConfig.logo}
-                  width={150}
-                  height={56}
-                  priority
-                />
+                  <Image
+                    alt="Veda Multispeciality Clinic Logo"
+                    src={siteConfig.logo}
+                    width={150}
+                    height={56}
+                    priority
+                  />
                 </Link>
               </div>
               <div className="min-w-0">
@@ -193,7 +207,7 @@ const Header = () => {
             </div>
           )}
         </div>
-      </header>
+      </header >
       <InstallPrompt />
     </>
   );

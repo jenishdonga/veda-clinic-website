@@ -2,7 +2,7 @@ import Header from "@/components/Front/Header";
 import Footer from "@/components/Front/Footer";
 import { Metadata } from "next";
 import { siteConfig } from "@/lib/site";
-import { getAllArrayData } from "@/lib/edge-config";
+import { getAllStaticData } from "@/lib/staticData";
 import TermsConditions from "@/components/Front/TermsConditions";
 
 export const metadata: Metadata = {
@@ -10,8 +10,8 @@ export const metadata: Metadata = {
   description: `Read the Terms and Conditions of ${siteConfig.name}.`,
 };
 
-const TermsConditionsPage = async () => {
-  const AllArrayData = await getAllArrayData();
+const TermsConditionsPage =  () => {
+  const AllArrayData =  getAllStaticData();
   return (
     <div className="min-h-screen bg-background">
       <Header />

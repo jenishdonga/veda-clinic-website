@@ -1,4 +1,4 @@
-import { getSiteConfig } from "@/lib/edge-config";
+import { siteConfig } from "@/lib/site";
 import { MyWrapper } from "@/lib/edge-config-context";
 
 
@@ -7,7 +7,5 @@ export default async function SiteConfigWrapper({
 }: {
   children: React.ReactNode;
 }) {
-  const siteConfig = await getSiteConfig();
-
   return <MyWrapper siteConfig={siteConfig}>{children}</MyWrapper>;
 }

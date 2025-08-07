@@ -2,7 +2,7 @@ import Header from "@/components/Front/Header";
 import Footer from "@/components/Front/Footer";
 import { siteConfig } from "@/lib/site";
 import { Metadata } from "next";
-import { getAllArrayData } from "@/lib/edge-config";
+import { getAllStaticData } from "@/lib/staticData";
 import PrivacyPolicy from "@/components/Front/PrivacyPolicy";
 
 export const metadata: Metadata = {
@@ -10,8 +10,8 @@ export const metadata: Metadata = {
   description: `Understand how ${siteConfig.name} collects and uses your data.`,
 };
 
-const PrivacyPolicyPage = async () => {
-  const AllArrayData = await getAllArrayData();
+const PrivacyPolicyPage =  () => {
+  const AllArrayData =  getAllStaticData();
   
   return (
     <div className="min-h-screen bg-background">
