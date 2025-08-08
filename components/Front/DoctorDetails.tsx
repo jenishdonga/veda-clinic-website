@@ -17,7 +17,7 @@ type Props = {
 export default function DoctorDetails({ doctor }: Props) {
     const siteConfig = useAppConfig();
     return (
-        <div className="min-h-screen bg-gradient-to-br from-background via-secondary/20 to-background">
+        <div className="overflow-x-hidden">
             {/* Header */}
             <div className="bg-gradient-medical text-white py-8">
                 <div className="container mx-auto px-4">
@@ -31,7 +31,7 @@ export default function DoctorDetails({ doctor }: Props) {
                         </Button>
                     </Link>
 
-                    <div className="flex flex-col lg:flex-row  items-center gap-6">
+                    <div className="flex flex-col lg:flex-row items-center lg:items-center gap-6 w-full overflow-x-hidden">
                         <Avatar className="w-32 h-32 border-4 border-white/20">
                             <AvatarImage src={doctor.image} alt={doctor.name} />
                             <AvatarFallback className="text-4xl bg-white/20 text-white">
@@ -66,15 +66,18 @@ export default function DoctorDetails({ doctor }: Props) {
             </div>
 
             <div className="container mx-auto px-4 py-8">
-                <div className="grid lg:grid-cols-3 gap-8">
+                {/* <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+                </div> */}
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                     {/* Main Content */}
-                    <div className="lg:col-span-2 space-y-6">
+                    <div className="lg:col-span-2 space-y-6 w-full">
                         {/* About */}
                         <Card className="rounded-xl overflow-hidden hover:shadow-medical transition-all duration-300 bg-white p-0">
                             <div className="bg-gradient-medical p-6">
                                 <CardTitle className="flex items-center gap-2 text-white">
                                     <Users className="w-5 h-5" />
-                                    About Dr. {doctor.name.split(' ')[1]}
+                                    About {doctor.name}
                                 </CardTitle>
                             </div>
                             <CardContent className="p-6">
@@ -142,10 +145,10 @@ export default function DoctorDetails({ doctor }: Props) {
                     </div>
 
                     {/* Sidebar */}
-                    <div className="space-y-6">
+                    <div className="space-y-6 ">
                         {/* Appointment Booking */}
-                        <Card className="top-6 rounded-xl overflow-hidden hover:shadow-medical transition-all duration-300 bg-white p-0">
-                            <div className="bg-gradient-medical p-6">
+                        <Card className="top-6 rounded-xl overflow-hidden hover:shadow-medical transition-all duration-300 bg-white p-0 w-full">
+                            <div className="bg-gradient-medical p-4 p-6 w-full ">
                                 <CardTitle className="flex items-center gap-2 text-white">
                                     <Calendar className="w-5 h-5" />
                                     Book Appointment
