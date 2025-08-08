@@ -1,14 +1,15 @@
 'use client';
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { User, Award, Clock } from "lucide-react";
+import { User, Award, Clock, ArrowRight } from "lucide-react";
 import { Doctor } from "@/lib/types";
 import { useAppConfig } from "@/lib/edge-config-context";
+import { Button } from "../ui/button";
+import Link from "next/link";
 
 type Props ={
   doctors:Doctor[]
 }
-
 
 const Doctors = ({doctors}:Props) => {
   const siteConfig = useAppConfig();
@@ -26,40 +27,48 @@ const Doctors = ({doctors}:Props) => {
 
         <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {doctors.map((doctor, index) => (
-            <Card key={index} className="rounded-xl overflow-hidden hover:shadow-medical transition-all duration-300 p-0 bg-white">
-              {/* Full-width header with gradient */}
-              <div className="bg-gradient-medical text-white w-full p-6">
-                <div className="flex items-center gap-4">
-                  <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center">
-                    <User className="w-8 h-8 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold leading-tight">{doctor.name}</h3>
-                    <div className="flex items-center gap-2 mt-1">
-                      <Award className="w-4 h-4" />
-                      <span className="text-sm opacity-90">{doctor.specialty}</span>
+            <Link href={`/doctor/${doctor.id}`} key={index}>
+              <Card  className="rounded-xl overflow-hidden hover:shadow-medical transition-all duration-300 p-0 bg-white group">
+                {/* Full-width header with gradient */}
+                <div className="bg-gradient-medical text-white w-full p-6">
+                  <div className="flex items-center gap-4">
+                    <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center">
+                      <User className="w-8 h-8 text-white" />
                     </div>
+                    <div>
+                      <h3 className="text-xl font-semibold leading-tight">{doctor.name}</h3>
+                      <div className="flex items-center gap-2 mt-1">
+                        <Award className="w-4 h-4" />
+                        <span className="text-sm opacity-90">{doctor.specialty}</span>
+                      </div>
+                    </div>
+                    <ArrowRight className="w-5 h-5 opacity-70 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-200" />
                   </div>
                 </div>
-              </div>
 
-              {/* Content */}
-              <CardContent className="p-6">
-                <div className="flex items-center gap-2 mb-4">
-                  <Clock className="w-4 h-4 text-muted-foreground" />
-                  <span className="text-sm text-muted-foreground">{doctor.experience}</span>
-                </div>
+                {/* Content */}
+                <CardContent className="p-6">
+                  <div className="flex items-center gap-2 mb-4">
+                    <Clock className="w-4 h-4 text-muted-foreground" />
+                    <span className="text-sm text-muted-foreground">{doctor.experience}</span>
+                  </div>
 
-                <h4 className="font-semibold text-foreground mb-3">Specializes in treating:</h4>
-                <div className="flex flex-wrap gap-2">
-                  {doctor.conditions.map((condition, conditionIndex) => (
-                    <Badge key={conditionIndex} variant="secondary" className="text-xs">
-                      {condition}
-                    </Badge>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
+                  <h4 className="font-semibold text-foreground mb-3">Specializes in treating:</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {doctor.conditions.map((condition, conditionIndex) => (
+                      <Badge key={conditionIndex} variant="secondary" className="text-xs">
+                        {condition}
+                      </Badge>
+                    ))}
+                  </div>
+
+                  <Button variant="outline" size="default" className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors mt-5">
+                    View Profile
+                    <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-200" />
+                  </Button>
+                </CardContent>
+              </Card>
+            </Link>
           ))}
 
 

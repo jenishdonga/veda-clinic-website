@@ -78,11 +78,22 @@ export type Service = {
 };
 
 export type Doctor = {
+  id:string;
   name: string;
   specialty: string;
   experience: string;
+  qualifications:string[]
   conditions: string[];
-  image: string | null;
+  about:string,
+  languages: string[];
+  consultationFee: string;
+  rating: number;
+  reviews: string;
+  availability: {
+    days: string[];
+    time: string;
+  };
+  image?: string | undefined;
 };
 
 export type AllArraysData = {
@@ -92,3 +103,23 @@ export type AllArraysData = {
 }
 
 export type Area = string;
+
+
+export type DoctorDetails = {
+  id: string;
+  name: string;
+  specialty: string;
+  experience: string;
+  qualifications: string[];
+  conditions: string[];
+  about: string;
+  languages: string[];
+  consultationFee: string;
+  rating: number;
+  reviews: number;
+  availability: {
+    days: string[];
+    time: string;
+  };
+  image?: string | undefined;
+};

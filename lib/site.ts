@@ -1,13 +1,5 @@
 // config/site.ts
-import {
-  Heart,
-  Brain,
-  Bone,
-  Stethoscope,
-  Ear,
-  Pill,
-  Leaf
-} from "lucide-react";
+
 
 export const siteConfig = {
   name: "Veda Multispeciality Clinic",
@@ -142,19 +134,57 @@ export const services = [
 
 export const doctors = [
   {
+    id: "bela-donga",
     name: "Dr. Bela Donga",
     specialty: "General Physician",
     experience: "Expert in primary care",
+    qualifications: ["MBBS", "MD (Medicine)", "Diploma in Family Medicine"],
     conditions: ["Fever", "Typhoid", "Chronic Illnesses", "Allergies", "Preventive Care"],
-    image: null
+    about:
+      "Dr. Bela Donga is a highly experienced General Physician with over 12 years of practice. She specializes in comprehensive primary care, preventive medicine, and management of chronic conditions. Her patient-centered approach ensures personalized treatment plans for optimal health outcomes.",
+    languages: ["English", "Hindi", "Gujarati"],
+    consultationFee: "",
+    rating: 4.9,
+    reviews: "500+",
+    availability: {
+      days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      time: "9:30 AM - 1:00 PM AND 5:30 PM - 7:00 PM",
+    },
+    image: undefined,
   },
   {
+    id: "radhika-patoriya",
     name: "Dr. Radhika Patoriya",
     specialty: "ENT Surgeon",
     experience: "Specialist surgeon",
+    qualifications: ["MBBS", "MS (ENT)", "Fellowship in Rhinology"],
     conditions: ["Sinusitis", "Hearing Loss", "Throat Conditions", "Nasal Disorders", "ENT Surgery"],
-    image: null
-  }
+    about:
+      "Dr. Radhika Patoriya is a renowned ENT Surgeon with 15 years of specialized experience. She has performed over 2000 successful surgeries and is known for her expertise in minimally invasive ENT procedures. Her compassionate care and surgical precision make her one of the most trusted ENT specialists.",
+    languages: ["Gujrati", "Hindi", "English"],
+    consultationFee: "₹300",
+    rating: 4.9,
+    reviews: "500+",
+    availability: {
+      days: ["Monday", "Tuesday","Wednesday","Thursday", "Friday", "Saturday"],
+      time: "10:00 AM - 1:00 PM AND 5:00 PM - 7:00 PM",
+    },
+    image: undefined,
+  },
+  // {
+  //   name: "Dr. Bela Donga",
+  //   specialty: "General Physician",
+  //   experience: "Expert in primary care",
+  //   conditions: ["Fever", "Typhoid", "Chronic Illnesses", "Allergies", "Preventive Care"],
+  //   image: null
+  // },
+  // {
+  //   name: "Dr. Radhika Patoriya",
+  //   specialty: "ENT Surgeon",
+  //   experience: "Specialist surgeon",
+  //   conditions: ["Sinusitis", "Hearing Loss", "Throat Conditions", "Nasal Disorders", "ENT Surgery"],
+  //   image: null
+  // }
 ];
 
 export const areas = [
